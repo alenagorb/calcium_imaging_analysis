@@ -20,7 +20,6 @@ if nargin < 3
     error('Not enough input arguments.');
 end
 
-
 % Extract all .xlsx files from the given directory and store the info 
 % on all .xlsx files as a struct
 D = dir(directory);
