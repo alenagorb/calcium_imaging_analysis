@@ -6,11 +6,13 @@ function out = extractCaData(directory, expduration, expconditions)
 % 
 % The function takes 3 compulsory inputs:
 % directory: specifies the working directory where the files to be analysed
-% are stored in a string format.
+% are stored e.g. directory = "C:\Users\~\*.xlsx".
 % expduration: final time up to which the time measurements were taken in
 % string format e.g. imaging for 5 mins means that expduration = '05:00.0'.
 % expconditions: a cell array containing strings describing the
-% experimental conditions/treatments used. These will be used to label the
+% experimental conditions/treatments used e.g. expcondition = 
+% {'Control','Treatment_1','Treatment_2','Treatment_3'}.
+% These will be used to label the
 % final plots of the results.
 
 % Error checking for required number of inputs
