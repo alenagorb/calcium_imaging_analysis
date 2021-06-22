@@ -33,8 +33,8 @@ for i = 1:length(D)
     opts.SelectedVariableNames = {'Time_m_s_','ROIID','Intensity'};
     T{i} = readtable(D(i).name, opts);
     T{i}.Time_m_s_ = datetime(T{i}.Time_m_s_,'ConvertFrom','datenum','Format','mm:ss.S');
-%     Convert the time column from serial date number to desired time
-%     format
+% Convert the time column from serial date number to desired time
+% format
 end
 
 % Remove rows with data after a timestamp specified by expduration 
