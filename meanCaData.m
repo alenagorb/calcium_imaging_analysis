@@ -3,7 +3,9 @@ function summary_table = meanCaData(directory, expduration, expconditions)
 % from excel files generated using 'Time Measurement' function in NIS
 % Elements software and plots the means of the individual measurements
 % for all conditions over time. The function also returns the summary
-% table containing all the means and timestamps.
+% table containing all the means and timestamps. The summary table is
+% then saved into the excel file under the name 'All_Means.xlsx' in 
+% the current folder.
 % 
 % The function takes 3 compulsory inputs:
 % directory: specifies the working directory where the files to be analysed
@@ -90,4 +92,7 @@ for e = 1:width(all_means)
 end
 
 summary_table = [time, summary_table];
-summary_table.Properties.VariableNames = ['Time (mins)',line_titles(:)']
+summary_table.Properties.VariableNames = ['Time (mins)',line_titles(:)'];
+
+% Save the summary table into the excel file in your current folder
+writetable(summary_table, 'All_Means.xlsx')
