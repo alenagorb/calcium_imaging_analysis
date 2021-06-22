@@ -1,8 +1,9 @@
-function out = meanCaData(directory, expduration, expconditions) 
+function summary_table = meanCaData(directory, expduration, expconditions) 
 % Function meanCaData extracts the changes in intensities over time 
 % from excel files generated using 'Time Measurement' function in NIS
 % Elements software and plots the means of the individual measurements
-% for all conditions over time.
+% for all conditions over time. The function also returns the summary
+% table containing all the means and timestamps.
 % 
 % The function takes 3 compulsory inputs:
 % directory: specifies the working directory where the files to be analysed
@@ -77,3 +78,16 @@ ylabel('Intensity')
 xticks(Time(1:60*2:end))
 xticklabels(string(Time(1:60*2:end)))
 legend(line_titles)
+
+% Combine all means into the summary table which can be used for further
+% statistical analysis
+time_string = string(datestr(datenum(Time),'MM:SS.FFF')); % convert the time
+% into string array so it can be concatenated to the main table
+time = table(time_string);
+
+for e = 1:width(all_means)
+    summary_table(:,e) = table(all_means(:,e));
+end
+
+summary_table = [time, summary_table];
+summary_table.Properties.VariableNames = ['Time (mins)',line_titles(:)']
